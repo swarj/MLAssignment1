@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score
+from sklearn.metrics import mean_squared_error
 
 url = "https://raw.githubusercontent.com/marcoan01/MLA/main/ale.csv"
 data = pd.read_csv(url)
@@ -48,6 +50,8 @@ def predict(x_t, weights):
     return y_predicted
 
 prev_weights, prev_cost = gradient_descent(X_train,y_train,weights,iter, lrate)
-print("\nPredicted set of values: " + str(predict(X_test, prev_weights[-1])))
+y_predict = predict(X_test, prev_weights[-1])
+print("\nPredicted set of values: " + str(y_predict))
 print("\n\nActual set of values: " + str(np.array(y_test)))
 print("\nMinimum cost for the model: " + str(prev_cost[-1]))
+print("\nMSE : " + str(np.sqrt(mean_squared_error(y_test, y_predict))))
