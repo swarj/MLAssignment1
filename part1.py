@@ -34,7 +34,7 @@ X_train, X_test = x[:train_size], x[train_size:]
 y_train, y_test = y[:train_size], y[train_size:]
 
 #variables
-lrate = 0.1
+lrate = 0.01
 iter = 2000
 np.random.seed(501)                                                                     #random starter values for slopes
 weights = np.random.rand(4)                                                             # 3 params + 1s
@@ -83,4 +83,12 @@ plt.title('Cost vs Iterations')
 plt.xlabel('# of Iterations')
 plt.ylabel('Error')
 plt.plot(prev_cost)
+plt.show()
+print("\n\n")
+
+#Plot Weight vs iteration
+plt.title('Weight vs Iterations')
+plt.xlabel('# of Iterations')
+plt.ylabel('Weight')
+plt.plot(prev_weights)
 plt.show()
